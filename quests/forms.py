@@ -1,13 +1,13 @@
 from django import forms
 from .models import *
 
-class CreateQuestboardForm(forms.ModelForm):
+class QuestboardForm(forms.ModelForm):
     class Meta:
-        model = CreateQuestboard
+        model = Questboard
         fields = ['name', 'description', 'stars']
 
-class AddQuestForm(forms.ModelForm):
+class QuestForm(forms.ModelForm):
     class Meta:
-        model = AddQuest
+        model = Quest
         fields = ['name', 'description', 'stars']
         # add missing fields (3 sign-ups or everyone)

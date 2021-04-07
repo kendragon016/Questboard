@@ -14,12 +14,12 @@ def home_view(request):
 
 def create_view(request):
     if request.method == 'POST':
-        form = CreateQuestboardForm(request.POST)
+        form = QuestboardForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
             stars = form.cleaned_data['stars']
-            obj = CreateQuestboard.objects.create(
+            obj = Questboard.objects.create(
                 name=name,
                 description=description,
                 stars=stars
@@ -29,20 +29,20 @@ def create_view(request):
 
         render(request, "create.html", {'form': form})
 
-    form = CreateQuestboardForm()
+    form = QuestboardForm()
     return render(request, 'create.html', {'form': form})
 
 
 def list_view(request):
-    return render(request, 'list.html', {'questboard_list': CreateQuestboard.objects.all()})
+    return render(request, 'list.html', {'questboard_list': Questboard.objects.all()})
 
 
 def edit_view(request, pk):
-    obj = CreateQuestboard.objects.get(id=pk)
-    form = CreateQuestboardForm(instance=obj)
+    obj = Questboard.objects.get(id=pk)
+    form = QuestboardForm(instance=obj)
 
     if request.method == "POST":
-        form = CreateQuestboardForm(request.POST, instance=obj)
+        form = QuestboardForm(request.POST, instance=obj)
         if form.is_valid():
             form.save()
             return redirect('list')
@@ -52,12 +52,12 @@ def edit_view(request, pk):
 
 def add_view(request):
     if request.method == 'POST':
-        form = AddQuestForm(request.POST)
+        form = QuestForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
             stars = form.cleaned_data['stars']
-            obj = AddQuest.objects.create(
+            obj = Quest.objects.create(
                 name=name,
                 description=description,
                 stars=stars
@@ -67,9 +67,9 @@ def add_view(request):
 
         render(request, "add.html", {'form': form})
 
-    form = AddQuestForm()
+    form = QuestForm()
     return render(request, 'add.html', {'form': form})
 
 
 def card_view(request):
-    return render(request, 'card.html', {'questcard_list': AddQuest.objects.all()})
+    return render(request, 'card.html', {'questcard_list': Quest.objects.all()})

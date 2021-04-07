@@ -3,13 +3,13 @@ from django.contrib import admin
 from .models import *
 
 
-class CreateAdmin(admin.ModelAdmin):
-    model = CreateQuestboard
+class QuestboardAdmin(admin.ModelAdmin):
+    model = Questboard
 
 
-class AddAdmin(admin.ModelAdmin):
-    model = AddQuest
+class QuestAdmin(admin.ModelAdmin):
+    model = Quest
 
 
-admin.site.register(CreateQuestboard, CreateAdmin)
-admin.site.register(AddQuest, AddAdmin)
+admin.site.register(Questboard, QuestboardAdmin)
+admin.site.register(Quest, QuestAdmin)
