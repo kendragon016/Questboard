@@ -51,24 +51,29 @@ def edit_view(request, pk):
 
 
 def add_view(request, pk):
+    course = Questboard.objects.get(pk=pk)
+
     if request.method == 'POST':
         form = QuestForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
             description = form.cleaned_data['description']
             stars = form.cleaned_data['stars']
+            max_dibs = form.cleaned_data['max_dibs']
             obj = Quest.objects.create(
+                board=course,
                 name=name,
                 description=description,
-                stars=stars
+                stars=stars,
+                max_dibs=max_dibs,
             )
             obj.save()
-            return redirect('card')
 
-        render(request, "add.html", {'form': form})
+            goto = '/board/teacher/' + str(pk)
+            return redirect(goto)
 
     form = QuestForm()
-    return render(request, 'add.html', {'form': form})
+    return render(request, 'add.html', {'form': form, 'course': course})
 
 
 def board_view(request, pk):

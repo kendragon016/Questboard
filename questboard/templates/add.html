@@ -1,10 +1,10 @@
 {%extends 'base.html' %}
 {% load static %}
 
-{% block title %}Add Quests{% endblock %}
+{% block title %}Add Quest{% endblock %}
 
 {% block content %}
-  <h1>Add Quests</h1>
+  <h1>Add Quest to {{ course.name }}</h1>
 
   {{ form.non_field_errors }}
   {% for field in form %}
@@ -18,11 +18,9 @@
     {% endif %}
   {% endfor %}
 
-    <div class="form_container">
-      <form action="/add" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit">
-      </form>
-    </div>
+    <form action="/add/{{ course.pk }}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Submit">
+    </form>
 {% endblock %}

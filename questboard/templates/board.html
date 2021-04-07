@@ -23,8 +23,7 @@
 
   {% for quest in quest_list %}
       <div class="questcard">
-        {{quest.board.name}}
-        <p>Quest: {{ quest.name }}</p>
+        <p><b>Quest: {{ quest.name }}</b></p>
         <p>Description: {{ quest.description }}</p>
         dibs:
         <ol>
@@ -36,5 +35,5 @@
       </div>
   {% endfor %}
 
-      <a href="/add"><button type="button">Add Quest</button></a></div>
+      <a href="/add/{{ course.pk }}"><button type="button">Add Quest</button></a></div>
 {% endblock %}
