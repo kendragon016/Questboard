@@ -9,5 +9,8 @@ class QuestboardForm(forms.ModelForm):
 class QuestForm(forms.ModelForm):
     class Meta:
         model = Quest
-        fields = ['name', 'description', 'stars', 'max_dibs']
-        # add missing fields (3 sign-ups or everyone)
+        fields = ['name', 'description', 'stars', 'everyone']
+
+class SignUpForm(forms.Form):
+	name = forms.CharField(label='sign up', max_length=80)
+		

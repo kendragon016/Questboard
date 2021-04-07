@@ -9,5 +9,6 @@ urlpatterns = [
     path('list', list_view, name='list'),
     path('edit/<int:pk>', edit_view, name='edit'),
     path('add/<int:pk>', add_view, name='add'),
-    path('board/teacher/<int:pk>', board_view, name='board_teacher'),
+    path('board/<str>/<int:pk>', board_view, name='board'),
+    path('sign_up/<int:cpk>/<int:qpk>', sign_up, name='sign_up'),
 ]

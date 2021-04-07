@@ -21,11 +21,12 @@ class Quest(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=280)
     stars = models.IntegerField()
-    max_dibs = models.IntegerField()
+    everyone = models.BooleanField(default=False)
     sign_ups = ArrayField(
         models.CharField(max_length=50),
         blank=True,
         null=True,
+        size=3
         )
 
     def __str__(self):

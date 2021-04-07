@@ -20,9 +20,7 @@
 
   <div class="questboard_list">
   {% for questboard in questboard_list %}
-        <a href="{% url 'board_teacher' questboard.pk %}">{{ questboard.name }}</a>
+        <a href="/board/teacher/{{ questboard.pk }}">{{ questboard.name }}</a>
   {% endfor %}
   </div>
-
-      <!-- <a href="{% url 'create' %}"><button type="button">Create New Questboard</button></a></div> -->
 {% endblock %}
