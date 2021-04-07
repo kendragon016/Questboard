@@ -30,8 +30,20 @@ def create_view(request):
         render(request, "create.html", {'form': form})
 
     form = CreateQuestboardForm()
-    return render(request, "create.html", {'form': form})
+    return render(request, 'create.html', {'form': form})
 
 
 def list_view(request):
-    return HttpResponse('HALLO')
+    return render(request, 'list.html', {'questboard_list': CreateQuestboard.objects.all()})
+
+def edit_view(request, pk):
+    obj = CreateQuestboard.objects.get(id=pk)
+    form = CreateQuestboardForm(instance=obj)
+
+    if request.method == "POST":
+        form = CreateQuestboardForm(request.POST, instance=obj)
+        if form.is_valid():
+            form.save()
+            return redirect('list')
+
+    return render(request, 'edit.html', {'form': form})
