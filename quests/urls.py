@@ -8,4 +8,6 @@ urlpatterns = [
     path('create', create_view, name='create'),
     path('list', list_view, name='list'),
     path('edit/<int:pk>', edit_view, name='edit'),
+    path('add', add_view, name='add'),
+    path('card', card_view, name='card'),
 ]
