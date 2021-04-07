@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 
 from .forms import *
 from .models import *
@@ -33,4 +34,4 @@ def create_view(request):
 
 
 def list_view(request):
-    return redirect('home')
+    return HttpResponse('HALLO')
