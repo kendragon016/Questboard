@@ -25,7 +25,7 @@ def create_view(request):
                 stars=stars
             )
             obj.save()
-            return redirect('list')
+            return redirect('card')
 
         render(request, "create.html", {'form': form})
 
@@ -50,7 +50,7 @@ def edit_view(request, pk):
     return render(request, 'edit.html', {'form': form})
 
 
-def add_view(request):
+def add_view(request, pk):
     if request.method == 'POST':
         form = QuestForm(request.POST)
         if form.is_valid():
@@ -71,5 +71,6 @@ def add_view(request):
     return render(request, 'add.html', {'form': form})
 
 
-def card_view(request):
-    return render(request, 'card.html', {'questcard_list': Quest.objects.all()})
+def board_view(request, pk):
+    course = Questboard.objects.get(pk=pk)
+    return render(request, 'board.html', {'quest_list': Quest.objects.filter(board=course), 'course': course})

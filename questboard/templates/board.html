@@ -1,0 +1,40 @@
+{%extends 'base.html' %}
+{% load static %}
+
+{% block title %}Questboard{% endblock %}
+
+{% block content %}
+  <h1>{{ course.name }} Questboard</h1>
+  <h2>Description: {{ course.description }}</h2>
+  <h3>Total stars: {{ course.stars }}</h3>
+  <a href="/edit/{{ course.pk }}">Edit Questboard</a>
+
+  {{ form.non_field_errors }}
+  {% for field in form %}
+    {% if field.errors %}
+      <p>{{ field.label }} has the following errors:</p>
+      <ul>
+      {% for error in field.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endfor %}
+
+  {% for quest in quest_list %}
+      <div class="questcard">
+        {{quest.board.name}}
+        <p>Quest: {{ quest.name }}</p>
+        <p>Description: {{ quest.description }}</p>
+        dibs:
+        <ol>
+          {% for name in quest.sign_ups %}
+            <li>{{ name }}</li>
+          {% endfor %}
+        </ol>
+        <p>Stars: {{ quest.stars }}</p>
+      </div>
+  {% endfor %}
+
+      <a href="/add"><button type="button">Add Quest</button></a></div>
+{% endblock %}

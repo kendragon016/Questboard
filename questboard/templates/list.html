@@ -1,10 +1,10 @@
 {%extends 'base.html' %}
 {% load static %}
 
-{% block title %}Questboard{% endblock %}
+{% block title %}List of Questboards{% endblock %}
 
 {% block content %}
-  <h1>Questboards</h1>
+  <h1>List of Questboards</h1>
 
   {{ form.non_field_errors }}
   {% for field in form %}
@@ -18,35 +18,11 @@
     {% endif %}
   {% endfor %}
 
+  <div class="questboard_list">
   {% for questboard in questboard_list %}
-
-    <div class="questboard">
-      <div class="questboard_name">
-        <p>{{ questboard.name }}</p>
-      </div>
-
-      <div class="questboard_description">
-        <p>{{ questboard.description }}</p>
-      </div>
-
-      <div class="questboard_stars">
-        <p>{{ questboard.stars }}</p>
-      </div>
-
-      <div class="entry_button">
-        <a href="{% url 'edit' questboard.pk %}">
-          <button type="button">Edit</button>
-        </a>
-      </div>
-
-      <div class="entry_button">
-        <a href="{% url 'add' %}">
-          <button type="button">Add Quests</button>
-        </a>
-      </div>
-
-    <div>
+        <a href="{% url 'board' questboard.pk %}">{{ questboard.name }}</a>
   {% endfor %}
+  </div>
 
-      <a href="{% url 'create' %}"><button type="button">Create New Questboard</button></a></div>
+      <!-- <a href="{% url 'create' %}"><button type="button">Create New Questboard</button></a></div> -->
 {% endblock %}
