@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'quests',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +84,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv("DB_PASS"),
+        'HOST': 'localhost', 'PORT': '5432',
+
     }
 }
 
@@ -124,4 +129,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'root')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'questboard/static')]

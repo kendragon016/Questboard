@@ -1,0 +1,28 @@
+{%extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create Questboards{% endblock %}
+
+{% block content %}
+  <h1>Create Questboards</h1>
+
+  {{ form.non_field_errors }}
+  {% for field in form %}
+    {% if field.errors %}
+      <p>{{ field.label }} has the following errors:</p>
+      <ul>
+      {% for error in field.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endfor %}
+
+    <div class="form_container">
+      <form action="/home" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+{% endblock %}
