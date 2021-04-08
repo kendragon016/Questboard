@@ -18,11 +18,9 @@
     {% endif %}
   {% endfor %}
 
-    <div class="form_container">
-      <form action="/create" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit">
-      </form>
-    </div>
+    <form class="form_container" action="/create" method="post">
+      {% csrf_token %}
+      <div class="create_form">{{ form.as_p }}</div>
+      <input class="primary_button" id="yellow_button" type="submit" value="Add Questboard">
+    </form>
 {% endblock %}

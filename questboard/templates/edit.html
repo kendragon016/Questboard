@@ -18,10 +18,9 @@
     {% endfor %}
 
   <h1>Edit</h1>
-  <form method="post">
+  <form class="form_container" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    {{ sign_up_form.as_p }}
-    <input type="submit" value="Update"/>
+    <div class="create_form">{{ form.as_p }}</div>
+    <input class="primary_button" id="yellow_button" type="submit" value="Update"/>
   </form>
 {% endblock %}

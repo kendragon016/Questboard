@@ -3,7 +3,12 @@
 {% block title %}Homepage{% endblock %}
 
 {% block content %}
-  <h1>HOMEPAGE</h1>
-  <a href="/create">Create Questboard</a><br>
-  <a href="/list">View List of Questboard</a>
+
+<div class="buttons_container">
+    <a class="giant_button" id="black_button" href="/create">Create New Questboard</a>
+
+    <a class="giant_button" id="yellow_button" href="/list">View All Questboards</a>
+</div>
+
+
 {% endblock %}

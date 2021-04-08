@@ -4,7 +4,7 @@
 {% block title %}List of Questboards{% endblock %}
 
 {% block content %}
-  <h1>List of Questboards</h1>
+  <h1>Questboards</h1>
 
   {{ form.non_field_errors }}
   {% for field in form %}
@@ -20,7 +20,7 @@
 
   <div class="questboard_list">
   {% for questboard in questboard_list %}
-        <a href="/board/teacher/{{ questboard.pk }}">{{ questboard.name }}</a>
+    <a class="questboard" id="black_button" href="/board/teacher/{{ questboard.pk }}">{{ questboard.name }}</a>
   {% endfor %}
   </div>
 {% endblock %}

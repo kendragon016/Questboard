@@ -6,6 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>{% block title %}Bernardo_Go_FinalProject{% endblock %}</title>
+
+    <style type="text/css">
+      @font-face {
+        font-family: 'avenir';
+        src: url("{% static 'fonts/avenir.ttf' %}");
+      }
+    </style>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     {% block styles %}{% endblock %}
   </head>
 
@@ -23,5 +32,5 @@
   <body>
     {% block content %}{% endblock %}
     {% block scripts %}{% endblock %}
-  </body> 
+  </body>
 </html>
