@@ -12,5 +12,4 @@ class QuestForm(forms.ModelForm):
         fields = ['name', 'description', 'stars', 'everyone']
 
 class SignUpForm(forms.Form):
-	name = forms.CharField(label='Call Dibs', max_length=80)
-		
+	name = forms.CharField(label='Call Dibs', max_length=80, initial='Your name')

@@ -9,7 +9,7 @@
   <h3>Required stars: {{ course.stars }}</h3>
   {% if request.path|slice:"7:14" == 'teacher' %}
     <a href="/edit_board/{{ course.pk }}">Edit Questboard</a>
-    <br><a href="/add/{{ course.pk }}"><button type="button">Add Quest</button></a></div>
+    <br><a href="/add/{{ course.pk }}"><button type="button">Add Quest</button></a>
     <br>Share Questboard to Students: <u>http://localhost:8000/board/student/{{ course.pk }}</u>
   {% endif %}
 
@@ -30,7 +30,9 @@
         <p><b>Quest: {{ quest.name }}</b></p>
         <p>Description: {{ quest.description }}</p>
         {% if quest.everyone or not quest.sign_ups %}
-        <p><a href="/edit_quest/{{ quest.pk }}">Edit Quest</a></p>
+          {% if request.path|slice:"7:14" == 'teacher' %}
+          <p><a href="/edit_quest/{{ quest.pk }}">Edit Quest</a></p>
+          {% endif %}
         {% endif %}
         {% if quest.everyone %}
         <p>all students will participate in this quest</p>
@@ -61,6 +63,7 @@
         <form action="/sign_up/{{ quest.pk }}" method="post">
           {% csrf_token %}
           {{ form }}
+          <input type="submit" value="Submit">
         </form>
         {% endif %}
       </div>
