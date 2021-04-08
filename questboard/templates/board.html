@@ -6,77 +6,79 @@
 {% block content %}
   <h1>{{ course.name }} Questboard</h1>
   <div class="page_content">
-    <p>Each group should collect <span class="emphasize">{{ course.stars }} stars </span> to fulfillthe requirements for {{ course.name }}</p>
+    <p id="stars">Each group should collect <span class="emphasize">{{ course.stars }} stars </span> to fulfillthe requirements for {{ course.name }}</p>
     <p>{{ course.description }}</p>
-  </div>
 
-  {% if request.path|slice:"7:14" == 'teacher' %}
-    <div class="teacher_buttons_container">
-      <a class="teacher_button" id="black_button" href="/edit_board/{{ course.pk }}">Edit Questboard</a>
-      <a class="teacher_button" id="yellow_button" href="/add/{{ course.pk }}">Add Quest</a>
-      <div class="share_button" id="black_button" id="share_button">Share Questboard to Students: <u>http://localhost:8000/board/student/{{ course.pk }}</u></div>
-    </div>
-  {% endif %}
-
-
-  {{ form.non_field_errors }}
-  {% for field in form %}
-    {% if field.errors %}
-      <p>{{ field.label }} has the following errors:</p>
-      <ul>
-      {% for error in field.errors %}
-        <li>{{ error }}</li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  {% endfor %}
-
-  <div class="questcard_container">
-    {% for quest in quest_list %}
-      <div class="questcard">
-        <h2><b>{{ quest.name }}</b></h2>
-        <p>{{ quest.description }}</p>
-        {% if quest.everyone %}
-        <p>all students will participate in this quest</p>
-        {% else %}
-
-        <h2>Dibs:</h2>
-        <ol>
-          {% for name in quest.sign_ups %}
-            <li>{{ name }}</li>
-          {% endfor %}
-          {% with count=quest.sign_ups|length %}
-          {% if count == 0 %}
-            <li>X X X</li>
-            <li>X X X</li>
-            <li>X X X</li>
-          {% elif count == 1 %}
-            <li>X X X</li>
-            <li>X X X</li>
-          {% elif count == 2 %}
-            <li>X X X</li>
-          {% endif %}
-          {% endwith %}
-        </ol>
-        {% endif %}
-
-        <p>Stars: {{ quest.stars }}</p>
-        {% if request.path|slice:"7:14" == 'student' and not quest.everyone and quest.sign_ups|length < 3 %}
-        <form action="/sign_up/{{ quest.pk }}" method="post">
-          {% csrf_token %}
-          <span id="dibs_form">{{ form }}</span>
-          <input class="dibs_button" id="yellow_button" type="submit" value="Call Dibs">
-        </form>
-        {% endif %}
-        {% if quest.everyone or not quest.sign_ups %}
-          {% if request.path|slice:"7:14" == 'teacher' %}
-          <div id="edit">
-            <a href="/edit_quest/{{ quest.pk }}">Edit Quest</a>
-          </div>
-
-          {% endif %}
-        {% endif %}
+    {% if request.path|slice:"7:14" == 'teacher' %}
+      <div class="teacher_buttons_container">
+        <a class="teacher_button" id="black_button" href="/edit_board/{{ course.pk }}">Edit Questboard</a>
+        <a class="teacher_button" id="yellow_button" href="/add/{{ course.pk }}">Add Quest</a>
+        <div class="share_button" id="black_button" id="share_button">Share Questboard to Students: <u>http://localhost:8000/board/student/{{ course.pk }}</u></div>
       </div>
+    {% endif %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+      {% if field.errors %}
+        <p>{{ field.label }} has the following errors:</p>
+        <ul>
+        {% for error in field.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
     {% endfor %}
+
+    {% if quest_list %}
+      <div class="questcard_container">
+        {% for quest in quest_list %}
+          <div class="questcard">
+            <h2><b>{{ quest.name }}</b></h2>
+            <p>{{ quest.description }}</p>
+            {% if quest.everyone %}
+            <p>all students will participate in this quest</p>
+            {% else %}
+
+              <h2>Dibs</h2>
+              <ol>
+                {% for name in quest.sign_ups %}
+                  <li>{{ name }}</li>
+                {% endfor %}
+                {% with count=quest.sign_ups|length %}
+                {% if count == 0 %}
+                  <li>X X X</li>
+                  <li>X X X</li>
+                  <li>X X X</li>
+                {% elif count == 1 %}
+                  <li>X X X</li>
+                  <li>X X X</li>
+                {% elif count == 2 %}
+                  <li>X X X</li>
+                {% endif %}
+                {% endwith %}
+              </ol>
+            {% endif %}
+
+            <p>{{ quest.stars }} Stars</p>
+            {% if request.path|slice:"7:14" == 'student' and not quest.everyone and quest.sign_ups|length < 3 %}
+            <form action="/sign_up/{{ quest.pk }}" method="post">
+              {% csrf_token %}
+              <span id="dibs_form">{{ form }}</span>
+              <input class="dibs_button" id="yellow_button" type="submit" value="Call Dibs">
+            </form>
+            {% endif %}
+            {% if quest.everyone or not quest.sign_ups %}
+              {% if request.path|slice:"7:14" == 'teacher' %}
+              <div id="edit">
+                <a href="/edit_quest/{{ quest.pk }}">Edit Quest</a>
+              </div>
+
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <h2>There are no quests yet.</h2>
+    {% endif %}
   </div>
 {% endblock %}

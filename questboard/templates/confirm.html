@@ -18,7 +18,9 @@
     {% endif %}
   {% endfor %}
 
-  <a href="/board/student/{{ quest.board.pk }}">No</a>
-  <a href="/confirm_dibs/{{ name }}/{{ quest.pk }}">Yes</a>
+  <div class="teacher_buttons_container">
+    <a class="teacher_button" id="black_button" href="/board/student/{{ quest.board.pk }}">No</a>
+    <a class="teacher_button" id="yellow_button" href="/confirm_dibs/{{ name }}/{{ quest.pk }}">Yes</a>
+  </div>
 
 {% endblock %}

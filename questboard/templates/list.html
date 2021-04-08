@@ -18,9 +18,13 @@
     {% endif %}
   {% endfor %}
 
-  <div class="questboard_list">
-  {% for questboard in questboard_list %}
-    <a class="questboard" id="black_button" href="/board/teacher/{{ questboard.pk }}">{{ questboard.name }}</a>
-  {% endfor %}
-  </div>
+  {% if questboard_list %}
+    <div class="questboard_list">
+    {% for questboard in questboard_list %}
+      <a class="questboard" id="black_button" href="/board/teacher/{{ questboard.pk }}">{{ questboard.name }}</a>
+    {% endfor %}
+    </div>
+  {% else %}
+    <h2 id="no_quests">There are no quests yet.</h2>
+  {% endif %}
 {% endblock %}

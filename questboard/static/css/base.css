@@ -1,0 +1,237 @@
+html{
+    background: #222222;
+}
+
+nav{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background-color:  #242424;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 4px 20px rgba(17, 17, 17, 0.25);
+    z-index: 9999999999999999999999999;
+}
+
+h1, h2, h3, p, a, li{
+    text-decoration: none;
+    color: #F2F2F3;
+    font-family: avenir;
+}
+
+nav a {
+    text-align: center;
+    padding: 0px 80px;
+    font-size: 16px;
+    line-height: 50px;
+    display: inline-block;
+    position: relative;
+    font-weight: normal;
+}
+
+nav ul {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    list-style: none;
+    display: table;
+}
+
+nav li {
+    display: table-cell;
+    position: relative;
+}
+
+#yellow_button{
+    background-color: #F0AE2D;
+    color:  #242424;
+}
+
+#black_button{
+    background-color:  #242424;
+    color: #f2f2f3;
+}
+
+#black_button, #yellow_button{
+    box-shadow: 0px 4px 20px rgba(17, 17, 17, 0.25);
+    text-align: center;
+    font-family: avenir;
+}
+
+.buttons_container{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 80vw;
+    left: 8vw;
+    top: 40vh;
+}
+
+.giant_button{
+    border-radius: 0.25em;
+    flex: 1;
+    margin: 0% 8%;
+    padding: 6% 4%;
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 180%;
+}
+
+h1{
+    font-size: 3em;
+    position: absolute;
+    top: 16vh;
+    left: 8vw;
+    width: 80vw;
+    line-height: 1.5em;
+}
+
+.questboard_list, .questcard_container{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    flex-direction: row;
+    width: 90vw;
+    top: 2vw;
+    left: -4vw;
+}
+
+.questboard_list{
+    top: 32vh;
+    left: 4vw;
+}
+
+.questboard{
+    flex: 1;
+    border-radius: 0.25em;
+    padding: 2%;
+    margin: 2% 4%;
+    font-weight: bold;
+    color: #F0AE2D;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.form_container{
+    position: relative;
+    top: 32vh;
+    align-items: left;
+    left: 4vw;
+}
+
+.create_form{
+    width: 40vw;
+    flex: 1;
+    border-radius: 0.25em;
+    padding: 2%;
+    margin: 2% 4%;
+    color:  #242424;
+    font-size: 1.2em;
+    box-shadow: 0px 4px 20px rgba(17, 17, 17, 0.25);
+}
+
+.primary_button{
+    border-radius: 0.25em;
+    padding: 1% 4%;
+    margin: 2% 4%;
+    font-size: 1em;
+    width: 24vw;
+}
+
+.page_content{
+    position: absolute;
+    top: 32vh;
+    left: 8vw;
+    width: 65vw;
+}
+
+#stars{
+    font-style: italic;
+}
+
+p{
+    line-height: 1.5em;
+    font-size: 1em;
+}
+
+.emphasize{
+    font-weight: bold;
+}
+
+.teacher_buttons_container{
+    display: flex;
+    width: 86vw;
+    position: relative;
+    left: -2vw;
+}
+
+.teacher_button{
+    flex: 1;
+    border-radius: 0.25em;
+    padding: 1% 2%;
+    margin: 0% 2%;
+    line-height: 2.5em;
+    font-size: 1.2em;
+}
+
+.share_button{
+    flex: 1;
+    border-radius: 0.25em;
+    padding: 1% 2%;
+    margin: 0% 2%;
+    font-size: 1.2em;
+}
+
+.questcard_container{
+    align-content: flex-start;
+}
+
+.questcard{
+    flex: 1;
+    border-radius: 0.25em;
+    padding: 1% 3% 3% 3%;
+    margin: 2% 4%;
+    text-align: left;
+    background-color:  #242424;
+    color: #F2F2F3;
+    box-shadow: 0px 4px 20px rgba(17, 17, 17, 0.25);
+}
+
+h2{
+    font-size: 1.5em;
+    color: #F0AE2D;
+}
+
+.questcard li{
+    line-height: 1.5em;
+}
+
+#edit{
+    background-color: #F0AE2D;
+    border-radius: 0.25em;
+    text-align: center;
+    margin: 8% 16% 2% 16%;
+    padding: 1% 2%;
+}
+
+#edit a{
+    color:  #242424;
+}
+
+#dibs_form{
+    height: 10vh;
+}
+
+.dibs_button{
+    padding: 0.5% 2%;
+}
+
+#no_quests{
+    position: relative;
+    top: 40vh;
+    text-align: center;
+    font-size: 2em;
+
+}
